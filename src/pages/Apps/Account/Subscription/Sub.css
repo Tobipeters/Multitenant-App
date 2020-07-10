@@ -1,0 +1,27 @@
+ul{
+    list-style: none;
+    padding: 1%;
+}
+.mod-list{
+    padding-left: 10px;
+}
+.card-cont{
+    min-width: 215px !important;
+    max-width: 215px !important;
+}
+.card-cont .card{
+    padding: 10px;
+}
+.card-cont .card-body{
+    padding: 0;
+}
+
+@media screen and (max-width:600px){
+    .mod-list{
+        font-size: 12px;
+    }
+    .card-cont{
+        min-width: 50% !important;
+        max-width: 50% !important;
+    }
+}
