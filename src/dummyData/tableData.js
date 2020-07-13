@@ -24,19 +24,25 @@ const subHistory = {
             sort: "asc",
             width: 100
         }
+        // {
+        //     label: "Make Payment",
+        //     field: "makePayment",
+        //     sort: "asc",
+        //     width: 100
+        // },
+        // {
+        //     label: "Invoice",
+        //     field: "invoice",
+        //     sort: "asc",
+        //     width: 100
+        // }
     ],
     rows: [
         {
-            package: "Basic",
-            startDate: "2018/12/10",
-            endDate: "2018/01/10",
-            paymentStatus: "Demo"
-        },
-        {
-            package: "Professional",
-            startDate: "2018/01/11",
-            endDate: "2019/01/11",
-            paymentStatus: "Paid"
+            package: "Premium",
+            startDate: "2020/01/15",
+            endDate: "2021/01/15",
+            paymentStatus: "Pending",
         },
         {
             package: "Professional",
@@ -45,10 +51,16 @@ const subHistory = {
             paymentStatus: "Paid"
         },
         {
-            package: "Premium",
-            startDate: "2020/01/15",
-            endDate: "2021/01/15",
-            paymentStatus: "Pending",
+            package: "Professional",
+            startDate: "2018/01/11",
+            endDate: "2019/01/11",
+            paymentStatus: "Paid"
+        },
+        {
+            package: "Basic",
+            startDate: "2017/12/10",
+            endDate: "2018/01/10",
+            paymentStatus: "Demo"
         }
     ]
 };

@@ -5,15 +5,30 @@ ul{
 .mod-list{
     padding-left: 10px;
 }
-.card-cont{
-    min-width: 215px !important;
-    max-width: 215px !important;
+.card-cont{ 
+    min-width: 20% !important;
+    max-width: 20% !important;
 }
 .card-cont .card{
     padding: 10px;
+    background: #f8f8fa;
 }
 .card-cont .card-body{
     padding: 0;
+}
+.navigation-pane {
+    background-color: transparent;
+    padding: 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5%!important;
+    margin-bottom: 20px;
+}
+.m-title-pad{
+    padding: 9px 0px 4.5px !important;
+}
+.col-sm-12 .page-title-box{
+    padding: 4.5px 0px 9px !important;
 }
 
 @media screen and (max-width:600px){
@@ -21,7 +36,7 @@ ul{
         font-size: 12px;
     }
     .card-cont{
-        min-width: 50% !important;
-        max-width: 50% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
     }
 }

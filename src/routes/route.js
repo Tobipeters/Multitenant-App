@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 //AUTH related methods
-import { getFirebaseBackend } from "../helpers/authUtils";
+//import { getFirebaseBackend } from "../helpers/authUtils";
 
 const AppRoute = ({
   component: Component,
@@ -13,7 +13,7 @@ const AppRoute = ({
   <Route
     {...rest}
     render={props => {
-      const fireBaseBackend = getFirebaseBackend();
+     /* const fireBaseBackend = getFirebaseBackend();
 
       if (isAuthProtected && !fireBaseBackend.getAuthenticatedUser()) {
         return (
@@ -21,7 +21,7 @@ const AppRoute = ({
             to={{ pathname: "/login", state: { from: props.location } }}
           />
         );
-      }
+      }*/
 
       return (
         <Layout>

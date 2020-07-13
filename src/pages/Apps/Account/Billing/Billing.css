@@ -1,3 +1,6 @@
 ul{
     list-style-type: none;
 }
+.col-sm-6 .page-title-box{
+    padding: 3px 0;
+}
