@@ -1,0 +1,49 @@
+ul{
+    list-style-type: none;
+}
+.col-sm-6 .page-title-box{
+    padding: 3px 0;
+}
+.m-sub-title{
+    padding: 10px 0px;
+    font-weight: 600 !important;
+}
+.price-cont{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2%;
+}
+.invoice-brd{
+    border-bottom:0.5px solid #00000047;
+}
+.price-card{
+    box-shadow: 6px 3px 12px 0px rgba(216, 216, 216, 0.74) !important;
+}
+.bottom-space{
+    margin-bottom: 30px;
+}
+.trans-list{
+    padding:10px 20px 10px 0;
+    border-bottom:0.5px solid #00000047;
+}
+.first-line-tr{
+    margin-bottom: 15px;
+}
+.trans-title, .trans-price{
+    font-weight: 500;
+    font-size: 16px;
+}
+.trans-price, .trans-more{
+    float:right;
+}
+.trans-status>div{
+    display: inline;
+}
+.trans-status>div>span::after{
+    content: " | ";
+}
+.trans-status>div>span:first-child{
+    color: green;
+}
+.trans-status>div>span:last-child:after{
+    content: "";
+}

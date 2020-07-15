@@ -27,10 +27,10 @@ const SidebarContent = props => {
           </Link>
           <ul className="sub-menu" aria-expanded="false">
             <li>
-              <Link to="/subscription">Subscription</Link>
+              <Link to="/account-subscription">Subscription</Link>
             </li>
             <li>
-              <Link to="/billing">Billing</Link>
+              <Link to="/account-payment">Payment</Link>
             </li>
           </ul>
         </li>

@@ -23,7 +23,7 @@ import Emailtemplatebilling from "../pages/Apps/EmailTemplate/email-template-bil
 
 //Newly created pages 
 import Subscription from '../pages/Apps/Account/Subscription/Subscription'
-import Billing from '../pages/Apps/Account/Billing/Billing'
+import Payment from '../pages/Apps/Account/Payment/Payment'
 
 // UI Pages
 import UiSweetAlert from "../pages/UI/UiSweetAlert";
@@ -106,8 +106,8 @@ const authProtectedRoutes = [
   { path: "/calendar", component: Calendar },
 
   //Newly created pages in authProtected Routes
-  { path: "/subscription", component: Subscription },
-  { path: "/billing", component: Billing },
+  { path: "/account-subscription", component: Subscription },
+  { path: "/account-payment", component: Payment },
 
   // Email & Email Templates
   { path: "/email-inbox", component: EmailInbox },
