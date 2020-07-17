@@ -9,7 +9,7 @@ ul{
     font-weight: 600 !important;
 }
 .price-cont{
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; 
     padding-bottom: 2%;
 }
 .invoice-brd{
@@ -17,6 +17,23 @@ ul{
 }
 .price-card{
     box-shadow: 6px 3px 12px 0px rgba(216, 216, 216, 0.74) !important;
+    
+}
+.card-easing{
+    transition:all 1s ease-out;
+    font-size:.9em;
+}
+.fold-modules{
+    transition:all 1s ease-in-out;
+    overflow: hidden;   
+}
+.package-features{
+    margin-bottom: 0.3em;
+}
+.expand-features{
+    cursor: pointer; 
+    color:  #1a0bfbad;
+    font-weight: 400 ;
 }
 .bottom-space{
     margin-bottom: 30px;

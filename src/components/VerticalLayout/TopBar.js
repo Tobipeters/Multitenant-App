@@ -116,7 +116,7 @@ class TopBar extends Component {
                 <i className="mdi mdi-menu"></i>
               </button>
 
-              <div className="d-none d-sm-block">
+              {/* <div className="d-none d-sm-block">
                 <Dropdown
                   isOpen={this.state.createMenu}
                   toggle={() =>
@@ -142,7 +142,7 @@ class TopBar extends Component {
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
-              </div>
+              </div> */}
             </div>
 
             <div className="d-flex">
@@ -193,7 +193,7 @@ class TopBar extends Component {
                 </div>
               </div>
 
-              <LanguageDropdown />
+              {/* <LanguageDropdown /> */}
 
               <div className="dropdown d-none d-lg-inline-block">
                 <button
@@ -210,7 +210,7 @@ class TopBar extends Component {
 
               <ProfileMenu />
 
-              <div className="dropdown d-inline-block">
+              {/* <div className="dropdown d-inline-block">
                 <button
                   type="button"
                   onClick={this.toggleRightbar}
@@ -218,7 +218,7 @@ class TopBar extends Component {
                 >
                   <i className="mdi mdi-settings-outline"></i>
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </header>

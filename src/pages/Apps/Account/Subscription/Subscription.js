@@ -8,8 +8,8 @@ import SettingMenu from "../../../Shared/SettingMenu";
 import { Link } from "react-router-dom";
 
 class subscription extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             newMenu: [
