@@ -22,8 +22,13 @@ import Emailtemplatebasic from "../pages/Apps/EmailTemplate/email-template-basic
 import Emailtemplatebilling from "../pages/Apps/EmailTemplate/email-template-billing";
 
 //Newly created pages 
-import Subscription from '../pages/Apps/Account/Subscription/Subscription'
-import Payment from '../pages/Apps/Account/Payment/Payment'
+import Subscription from '../pages/Apps/Account/Subscription/Subscription';
+import Payment from '../pages/Apps/Account/Payment/Payment';
+import Users from '../pages/Apps/User-Management/Users/Users';
+import Roles from '../pages/Apps/User-Management/Roles/Roles';
+import Groups from '../pages/Apps/User-Management/Groups/Groups';
+import Privileges from '../pages/Apps/User-Management/Privileges/Privileges';
+import Profile from '../pages/Apps/Profile/Profile'
 
 // UI Pages
 import UiSweetAlert from "../pages/UI/UiSweetAlert";
@@ -108,6 +113,11 @@ const authProtectedRoutes = [
   //Newly created pages in authProtected Routes
   { path: "/account-subscription", component: Subscription },
   { path: "/account-payment", component: Payment },
+  { path: "/user-management-users", component: Users },
+  { path: "/user-management-roles", component: Roles },
+  { path: "/user-management-groups", component: Groups },
+  { path: "/user-management-privileges", component: Privileges },
+  { path: "/profile", component: Profile },
 
   // Email & Email Templates
   { path: "/email-inbox", component: EmailInbox },

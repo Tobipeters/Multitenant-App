@@ -4,11 +4,10 @@ import { Row, Col, Card, CardBody } from 'reactstrap';
 import { MDBDataTable } from "mdbreact";
 import subHistory from '../../../../dummyData/tableData';
 import { MdDone } from "react-icons/md";
-import SettingMenu from "../../../Shared/SettingMenu";
-import { Link } from "react-router-dom";
+import AppHeader from '../../../../newComponents/appHeader'
 
 class subscription extends React.Component {
-    constructor(props) {
+    constructor(props) { 
         super(props)
 
         this.state = {
@@ -25,7 +24,6 @@ class subscription extends React.Component {
                     link:'c.com',
                     name:'third-menu'
                 }
-
             ]
 
             
@@ -35,29 +33,15 @@ class subscription extends React.Component {
 
         return (
             <div className="container-fluid">
-                <div className="page-title-box m-title-pad">
-                    <h4 className="font-size-18">Subscription</h4>
-                </div>
 
-                <Row className="align-items-center navigation-pane">
-                    <Col sm={6}>
-                        <div className="page-title-box">
-                            <ol className="breadcrumb mb-0 ">
-                                <li className="breadcrumb-item">
-                                    <Link to="/#"><i className="fa fa-home"></i></Link>
-                                </li>
-                                <li className="breadcrumb-item">Account</li>
-                                <li className="breadcrumb-item active">Subscription</li>
-                            </ol>
-                        </div>
-                    </Col>
+                <AppHeader
+                title={"Subscription"}
+                breadcrumbMain={"Account"}
+                breadcrumbSubMain={"Subscription"}
+                allMenu={'setting-menu-for-each-page-comes-in-here'}
+                />
 
-                    <Col sm={6}>
-                            <div className="float-right d-none d-md-block">
-                                <SettingMenu allMenu={this.state.newMenu} />
-                            </div>
-                        </Col>
-                </Row>
+
                 <Card>
                     <CardBody>
                         <h3 className="font-size-18">Subscription History</h3>

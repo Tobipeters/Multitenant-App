@@ -4,11 +4,12 @@ import { Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import SettingMenu from "../../../Shared/SettingMenu";
 import packages from '../../../../dummyData/packages';
-import Invoice from '../../../../newComponents/invoice'
+import Invoice from '../../../../newComponents/invoice';
+import AppHeader from '../../../../newComponents/appHeader'
 
 class Billing extends React.Component {
     constructor(props) {
-        super(props)
+        super(props) 
         this.state = {
             expandHeight: '250px',
         }
@@ -89,29 +90,12 @@ class Billing extends React.Component {
         console.log(packageLists)
         return (
             <div className="container-fluid">
-                <div className="page-title-box m-title-pad">
-                    <h4 className="font-size-18">Payment</h4>
-                </div>
-
-                <Row className="align-items-center navigation-pane">
-                    <Col sm={6}>
-                        <div className="page-title-box">
-                            <ol className="breadcrumb mb-0 ">
-                                <li className="breadcrumb-item">
-                                    <Link to="/#"><i className="fa fa-home"></i></Link>
-                                </li>
-                                <li className="breadcrumb-item">Account</li>
-                                <li className="breadcrumb-item active">Payment</li>
-                            </ol>
-                        </div>
-                    </Col>
-
-                    <Col sm={6}>
-                        <div className="float-right d-none d-md-block">
-                            <SettingMenu />
-                        </div>
-                    </Col>
-                </Row>
+                 <AppHeader
+                title={"Payment"}
+                breadcrumbMain={"Account"}
+                breadcrumbSubMain={"Payment"}
+                allMenu={'setting-menu-for-each-page-comes-in-here'}
+                />
 
                 {/* Pricing packages start here */}
                 <div className="m-sub-title">

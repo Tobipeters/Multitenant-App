@@ -36,6 +36,27 @@ const SidebarContent = props => {
         </li>
 
         <li>
+          <Link to="/#" className="has-arrow waves-effect">
+            <i className="fa fa-users"></i>
+            <span>User Management</span>
+          </Link>
+          <ul className="sub-menu" aria-expanded="false">
+            <li>
+              <Link to="/user-management-users">Users</Link>
+            </li>
+            <li>
+              <Link to="/user-management-roles">Roles</Link>
+            </li>
+            <li>
+              <Link to="/user-management-groups">Groups</Link>
+            </li>
+            <li>
+              <Link to="/user-management-privileges">Privileges</Link>
+            </li>
+          </ul>
+        </li>
+
+        <li>
           <Link to="/calendar" className=" waves-effect">
             <i className="ti-calendar"></i>
             <span>Calendar</span>

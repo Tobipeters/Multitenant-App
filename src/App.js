@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Switch, BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 
+//bootstrap cdn 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // Import Routes
 import { authProtectedRoutes, publicRoutes } from "./routes/";
 import AppRoute from "./routes/route";
