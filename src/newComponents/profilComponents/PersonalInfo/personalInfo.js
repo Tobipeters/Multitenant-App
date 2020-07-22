@@ -69,9 +69,6 @@ class personalInfo extends React.Component {
                                 type="email"
                                 placeholder="Edit your personal email here" />
                         </Form.Group>
-                    </Form.Row>
-
-                    <Form.Row>
 
                         <Form.Group as={Col}>
                             <Label> Date of birth </Label>
@@ -87,7 +84,6 @@ class personalInfo extends React.Component {
                             </InputGroup>
                         </Form.Group>
 
-
                         <Form.Group as={Col}>
                             <Form.Label>Gender</Form.Label>
                             <Form.Control size="sm" as="select">
@@ -98,6 +94,14 @@ class personalInfo extends React.Component {
                                     })}
                             </Form.Control>
                         </Form.Group>
+                    </Form.Row>
+
+                    <Form.Row>
+
+                        
+
+
+                        
 
                     </Form.Row>
                 </Form>
