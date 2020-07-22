@@ -1,0 +1,23 @@
+
+.react-datepicker-wrapper .form-control{
+    width: 100% !important ;
+}
+.react-datepicker-wrapper {
+    width:100% !important;
+}
+.react-datepicker-wrapper .form-control{
+    width: 100% !important ;
+}
+
+.mobile-form{
+    display:none;
+}
+
+@media screen and (max-width:600px){
+    .desktop-form{
+        display:none;
+    }
+    .mobile-form{
+        display: block;
+    }
+}
