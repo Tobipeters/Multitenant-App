@@ -2,10 +2,10 @@ import React from 'react';
 import './Profile.css';
 import ProfileAvatar from '../../../assets/images/user-avatar.jpg';
 import { Link } from 'react-router-dom';
-import { Badge, Tabs, Tab } from 'react-bootstrap';
+import {Row, Badge, Tabs, Tab } from 'react-bootstrap';
 import PersonalInfo from '../../../newComponents/profilComponents/PersonalInfo/personalInfo'
 import UserInfo from '../../../dummyData/userInformation'
-
+import ProfileImage from '../../../newComponents/profilComponents/PersonalInfo/profileImage'
 
 
 class Profile extends React.Component {
@@ -15,7 +15,7 @@ class Profile extends React.Component {
             userData:UserInfo
         }
     }
-
+    
     // componentDidUpdate(){
     //     this.setState({
     //         userData:UserInfo
@@ -26,7 +26,6 @@ class Profile extends React.Component {
     render() {
         return (
             <div classNameName="container">
-
                 {/* <!-- Main content --> */}
                 <section className="content">
                     <div className="content-header">
@@ -38,12 +37,14 @@ class Profile extends React.Component {
                             {/* <!-- Profile Image --> */}
                             <div className="box box-primary">
                                 <div className="box-body box-profile">
-                                    <img
+                                {/* <img
                                         className="profile-user-img img-responsive img-circle"
                                         src={ProfileAvatar}
                                         alt="User profile picture"
-                                    />
+                                    /> */}
 
+                                    <ProfileImage />
+                                    
                                     <h3 className="profile-username text-center">Theresa Smith</h3>
 
                                     <p className="text-muted text-center">Software Engineer</p>

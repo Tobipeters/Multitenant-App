@@ -108,3 +108,28 @@
     width: 100% !important ;
     border: 1px solid #ced4da;
 }
+
+.box-body.box-profile input[type="file"] {
+    position: absolute;
+    padding: 9% 0%;
+    top: 8%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.profile-user-img {
+    width: 50%!important;
+}
+
+.close-btn{
+    color: red;
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 30%;
+    font-weight: 600;
+}
+
+.img-responsive {
+    min-height: 160px!important;
+}
