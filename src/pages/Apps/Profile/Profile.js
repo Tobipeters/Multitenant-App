@@ -7,6 +7,7 @@ import PersonalInfo from '../../../newComponents/profilComponents/PersonalInfo/p
 import UserInfo from '../../../dummyData/userInformation'
 
 
+
 class Profile extends React.Component {
     constructor() {
         super()

@@ -78,7 +78,7 @@ class personalInfo extends React.Component {
                             <InputGroup >
                                 <DatePicker
                                     selected={this.state.default_date}
-                                    className="form-control form-control-sm"
+                                    className="form-control-sm date-control"
                                     onChange={this.handleDefault}
                                     placeholder="mm/dd/yyyy"
                                     showMonthDropdown

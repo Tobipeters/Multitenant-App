@@ -9,6 +9,10 @@
     width: 100% !important ;
 }
 
+.date-control{
+    width: 100% !important ;
+}
+
 .mobile-form{
     display:none;
 }
