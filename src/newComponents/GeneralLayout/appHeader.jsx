@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
-import SettingMenu from "../pages/Shared/SettingMenu";
+import SettingMenu from "../../pages/Shared/SettingMenu";
 import { Link } from "react-router-dom";
 
 
