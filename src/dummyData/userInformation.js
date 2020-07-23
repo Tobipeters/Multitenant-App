@@ -5,7 +5,7 @@ const userData = [
         middleName:'Peter',
         lastName:'Taiwo',
         location:'Lagos, Nigeria',
-        skills:['HTML','CSS','JavaScript'],
+        skills:['HTML','CSS','JavaScript','Angular','React','Git'],
         picture:'url',
         title:'Software Engineer',
         position:'Team Lead',

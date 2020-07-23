@@ -7,8 +7,8 @@ import { MdDone } from "react-icons/md";
 import AppHeader from '../../../../newComponents/appHeader'
 
 class subscription extends React.Component {
-    constructor(props) { 
-        super(props)
+    constructor() { 
+        super()
 
         this.state = {
             newMenu: [

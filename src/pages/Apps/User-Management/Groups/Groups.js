@@ -2,9 +2,9 @@ import React from 'react'
 import AppHeader from '../../../../newComponents/appHeader'
 
 class Groups extends React.Component{
-    constructor (){
-        super()
-    }
+    // constructor (){
+    //     super()
+    // }
 
     render(){
         return (
