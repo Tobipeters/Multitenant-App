@@ -17,7 +17,7 @@ class profileImage extends React.Component {
   
     resetFile(event) {
       event.preventDefault();
-      this.setState({ file: null });
+      this.setState({ file: ProfileAvatar });
     }
     render() {
       return (
