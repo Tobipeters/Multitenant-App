@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Col } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
-import { FormGroup, InputGroup, Label } from "reactstrap";
+import { InputGroup, Label } from "reactstrap";
 import "react-datepicker/dist/react-datepicker.css";
 import './personalInfo.css'
 

@@ -13,6 +13,7 @@ class profileImage extends React.Component {
       this.setState({
         file: URL.createObjectURL(event.target.files[0])
       });
+      console.log(this.state.file)
     }
   
     resetFile(event) {

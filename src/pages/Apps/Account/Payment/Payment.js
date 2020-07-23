@@ -2,7 +2,6 @@ import React from 'react'
 import './Payment.css'
 import { Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom'
-import SettingMenu from "../../../Shared/SettingMenu";
 import packages from '../../../../dummyData/packages';
 import Invoice from '../../../../newComponents/invoice';
 import AppHeader from '../../../../newComponents/appHeader'

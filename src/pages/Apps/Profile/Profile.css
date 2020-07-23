@@ -133,3 +133,16 @@
 .img-responsive {
     min-height: 160px!important;
 }
+
+.del-skill{
+    background: #fff;
+    color: #6c757d;
+    padding: 1.5px 2.5px;
+    border-radius: 100%;
+    font-weight: 600;
+    cursor: pointer;
+}
+.del-skill:hover{
+    background: #f11c1c;
+    color: #fff;
+}
