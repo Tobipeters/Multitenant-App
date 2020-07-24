@@ -15,10 +15,24 @@
 .mobile-form{
     display:none;
 }
+.save-image{
+    display: block !important;
+    margin: 2% auto;
+    padding: 0.2% 5%;
+}
+.add-btn-container{
+    position: relative;
+}
+.row>div>.add-skill{
+    position: absolute;
+    bottom: 0;
+    padding: 0.25rem 0.7rem;
+
+}
 
 @media screen and (max-width:600px){
     .desktop-form{
-        display:none;
+        display:block;
     }
     .mobile-form{
         display: block;

@@ -2,9 +2,12 @@ import React from 'react';
 import './Profile.css';
 import { Link } from 'react-router-dom';
 import { Badge, Tabs, Tab } from 'react-bootstrap';
-import PersonalInfo from '../../../newComponents/profilComponents/PersonalInfo/personalInfo'
+import PersonalInfo from './profileComponents/PersonalInfo/personalInfo'
 import UserInfo from '../../../dummyData/userInformation'
-import ProfileImage from '../../../newComponents/profilComponents/PersonalInfo/profileImage'
+import ProfileImage from './profileComponents/profileImage'
+import AcademicQualification from './profileComponents/acadQualification'
+import WorkExperience from './profileComponents/workExperience';
+import ProfessionalQualification from './profileComponents\/profQualification'
 // import { userInfo } from 'os';
 
 
@@ -13,25 +16,90 @@ class Profile extends React.Component {
         super()
         this.state = {
             userData: UserInfo,
-            skills:UserInfo[0].skills
+            skills: UserInfo[0].skills,
+            orgUnits: [UserInfo[0].orgUnit]
         }
-        this.deletSkill=this.deletSkill.bind(this)
+        this.deletSkill = this.deletSkill.bind(this)
     }
 
 
-    deletSkill(id){
+    deletSkill(id) {
         //Skills duplicaated array
         const updatedSkills = [...this.state.skills]
         updatedSkills.splice(id, 1)
-        this.setState(prevState=>({
+        this.setState(prevState => ({
             ...prevState,
-            skills:updatedSkills
+            skills: updatedSkills
         }))
     }
 
     render() {
-        console.log(this.state.userData)
-        
+        // console.log(this.state.userData)
+        const countUnit = this.state.orgUnits
+        const count = this.state.orgUnits[0].length;
+      
+        const checkOrgUnit = () => {
+         
+            switch (count) {
+                case 3:
+                    return (
+                        <>
+                            <li className="list-group-item">
+                                <div className="item-text">
+                                    <span className="text-muted">Department:</span>
+                                    <span className="text-muted float-right">{countUnit[0][0].name}</span>
+                                </div>
+                            </li>
+                            <li className="list-group-item">
+                                <div className="item-text">
+                                    <span className="text-muted">Unit:</span>
+                                    <span className="text-muted float-right">{countUnit[0][1].name}</span>
+                                </div>
+                            </li>
+                            <li className="list-group-item">
+                                <div className="item-text">
+                                    <span className="text-muted">Team:</span>
+                                    <span className="text-muted float-right">{countUnit[0][2].name}</span>
+                                </div>
+                            </li>
+                            </>  
+                    );
+                case 2:
+                    return (
+                        <>
+                            <li className="list-group-item">
+                                <div className="item-text">
+                                    <span className="text-muted">Department:</span>
+                                    <span className="text-muted float-right">{countUnit[0][0].name}</span>
+                                </div>
+                            </li>
+                            <li className="list-group-item">
+                                <div className="item-text">
+                                    <span className="text-muted">Unit:</span>
+                                    <span className="text-muted float-right">{countUnit[0][1].name}</span>
+                                </div>
+                            </li>
+                        </>
+                    );
+                    case 1:
+                        return (
+                            <>
+                                <li className="list-group-item">
+                                    <div className="item-text">
+                                        <span className="text-muted">Department:</span>
+                                        <span className="text-muted float-right">{countUnit[0][0].name}</span>
+                                    </div>
+                                </li>
+                            </>
+                        );
+                default:
+                    break;
+            }
+        }
+
+      const orgUnitList = checkOrgUnit();
+
+
         return (
             <div classNameName="container">
                 {/* <!-- Main content --> */}
@@ -68,7 +136,8 @@ class Profile extends React.Component {
                                                 <span className="text-muted">{this.state.userData[0].location}</span>
                                             </div>
                                         </li>
-                                        <li className="list-group-item">
+                                        {orgUnitList}
+                                        {/* <li className="list-group-item">
                                             <div className="item-text">
                                                 <i className="fa fa-map-marker mr-2" aria-hidden="true"></i>
                                                 <span className="text-muted">Department</span>
@@ -79,7 +148,7 @@ class Profile extends React.Component {
                                                 <i className="fa fa-map-marker mr-2" aria-hidden="true"></i>
                                                 <span className="text-muted">Unit</span>
                                             </div>
-                                        </li>
+                                        </li> */}
 
                                     </ul>
 
@@ -99,15 +168,15 @@ class Profile extends React.Component {
                                 {/* <!-- /.box-header --> */}
                                 <div className="box-body">
                                     <div>{
-                                        this.state.skills.map((skill, id)=>{
-                                            return(
-                                                <Badge className="mr-1 mb-1" pill variant="secondary"> 
-                                                {skill}
-                                        <i onClick={()=>this.deletSkill(id)} class="fa fa-times ml-2 del-skill" aria-hidden="true"></i>
-                                        </Badge>
+                                        this.state.skills.map((skill, id) => {
+                                            return (
+                                                <Badge className="badge-color mr-1 mb-1" pill  variant="info">
+                                                    {skill}
+                                                    <i onClick={() => this.deletSkill(id)} class="fa fa-times ml-2 del-skill" aria-hidden="true"></i>
+                                                </Badge>
                                             )
                                         })
-                                        }
+                                    }
                                     </div>
                                 </div>
                                 {/* <!-- /.box-body --> */}
@@ -118,18 +187,18 @@ class Profile extends React.Component {
 
                         {/* <!-- /.col --> */}
                         <div className="col-md-9">
-                            <Tabs className="tabs-holder" defaultActiveKey="personalInformation" id="uncontrolled-tab-example">
+                            <Tabs className="tabs-holder" defaultActiveKey="personalInformation" >
                                 <Tab className="tab-container" eventKey="personalInformation" title="Personal Information">
                                     <PersonalInfo />
                                 </Tab>
                                 <Tab className="tab-container" eventKey="AcademicQualifications" title="Academic Qualifications">
-                                    Academic Qualifications component
+                                    <AcademicQualification />
                                 </Tab>
                                 <Tab className="tab-container" eventKey="professionalQualifications" title="Professional Qualifications" >
-                                    professional Qualifications component
+                                   <ProfessionalQualification />
                                 </Tab>
                                 <Tab className="tab-container" eventKey="workExperience" title="Work Experience" >
-                                    work Experience Component
+                                   <WorkExperience />
                                 </Tab>
                             </Tabs>
                         </div>
