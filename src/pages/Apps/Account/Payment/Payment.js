@@ -3,8 +3,8 @@ import './Payment.css'
 import { Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import packages from '../../../../dummyData/packages';
-import Invoice from '../../../../newComponents/invoice';
-import AppHeader from '../../../../newComponents/appHeader'
+import Invoice from './PaymentComponents/invoice';
+import AppHeader from '../../../../newComponents/GeneralLayout/appHeader'
 
 class Billing extends React.Component {
     constructor(props) {

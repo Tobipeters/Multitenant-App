@@ -28,7 +28,7 @@ class personalInfo extends React.Component {
             <div>
                 <Form className="desktop-form">
                     <Form.Row>
-                        <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Group as={Col} >
                             <Form.Label>First name</Form.Label>
                             <Form.Control
                                 size="sm"
@@ -36,7 +36,7 @@ class personalInfo extends React.Component {
                                 placeholder="First name" />
                         </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Group as={Col} >
                             <Form.Label>Middle name</Form.Label>
                             <Form.Control
                                 size="sm"
@@ -44,7 +44,7 @@ class personalInfo extends React.Component {
                                 placeholder="Middle name" />
                         </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridPassword">
+                        <Form.Group as={Col} >
                             <Form.Label>Last name</Form.Label>
                             <Form.Control
                                 size="sm"
@@ -54,7 +54,7 @@ class personalInfo extends React.Component {
                     </Form.Row>
 
                     <Form.Row>
-                        <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Group as={Col} >
                             <Form.Label>Official email</Form.Label>
                             <Form.Control
                                 size="sm"
@@ -62,7 +62,7 @@ class personalInfo extends React.Component {
                                 placeholder="Edit your official email here" />
                         </Form.Group>
 
-                        <Form.Group as={Col} controlId="formGridEmail">
+                        <Form.Group as={Col} >
                             <Form.Label>Personal email</Form.Label>
                             <Form.Control
                                 size="sm"
@@ -109,7 +109,7 @@ class personalInfo extends React.Component {
                 <div className="mobile-form">
                     <Form>
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Group as={Col} >
                                 <Form.Label>First name</Form.Label>
                                 <Form.Control
                                     size="sm"
@@ -118,7 +118,7 @@ class personalInfo extends React.Component {
                             </Form.Group>
                         </Form.Row>
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Group as={Col} >
                                 <Form.Label>Middle name</Form.Label>
                                 <Form.Control
                                     size="sm"
@@ -127,7 +127,7 @@ class personalInfo extends React.Component {
                             </Form.Group>
                         </Form.Row>
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridPassword">
+                            <Form.Group as={Col} >
                                 <Form.Label>Last name</Form.Label>
                                 <Form.Control
                                     size="sm"
@@ -137,7 +137,7 @@ class personalInfo extends React.Component {
                         </Form.Row>
 
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Group as={Col} >
                                 <Form.Label>Official email</Form.Label>
                                 <Form.Control
                                     size="sm"
@@ -146,7 +146,7 @@ class personalInfo extends React.Component {
                             </Form.Group>
                         </Form.Row>
                         <Form.Row>
-                            <Form.Group as={Col} controlId="formGridEmail">
+                            <Form.Group as={Col} >
                                 <Form.Label>Personal email</Form.Label>
                                 <Form.Control
                                     size="sm"

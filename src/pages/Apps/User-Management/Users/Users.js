@@ -1,5 +1,5 @@
 import React from 'react'
-import AppHeader from '../../../../newComponents/appHeader'
+import AppHeader from '../../../../newComponents/GeneralLayout/appHeader'
 
 class Users extends React.Component{
     // constructor (){

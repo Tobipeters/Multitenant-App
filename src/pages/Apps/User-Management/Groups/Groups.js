@@ -1,5 +1,5 @@
 import React from 'react'
-import AppHeader from '../../../../newComponents/appHeader'
+import AppHeader from '../../../../newComponents/GeneralLayout/appHeader'
 
 class Groups extends React.Component{
     // constructor (){

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import invoiceData from '../../dummyData/invoiceData';
+import invoiceData from '../../../../../dummyData/invoiceData';
 import { Modal } from 'reactstrap'
 
 class Invoice extends React.Component {
