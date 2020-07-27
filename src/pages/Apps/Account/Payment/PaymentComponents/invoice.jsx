@@ -35,7 +35,6 @@ class Invoice extends React.Component {
     renderModal = () => {
         if (this.state.selectedInvoice !== null) {
             const clickedInvoice = this.state.invoices[this.state.selectedInvoice];
-            console.log(clickedInvoice)
             return(
                 <div className="modal-body">
                  <span> {clickedInvoice.transactionAmount} </span>

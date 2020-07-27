@@ -1,5 +1,6 @@
 import React from "react";
 import WorkExData from "../../../../dummyData/qualificationData";
+import { Badge } from 'react-bootstrap'
 
 class acadQualification extends React.Component {
   constructor() {
@@ -8,6 +9,10 @@ class acadQualification extends React.Component {
       works: WorkExData[0].workExData,
     };
   }
+
+
+
+  
   render() {
     const workHistory = this.state.works.map((work, id) => {
       return (
@@ -18,6 +23,10 @@ class acadQualification extends React.Component {
             <td>{work.position}</td>
             <td>{work.startDate}</td>
              <td>{work.endDate}</td>
+             <td>
+              <Badge variant="success" className="mr-3 action-btn">Edit</Badge>
+              <Badge variant="danger" className="action-btn">Delete</Badge>
+            </td>
           </tr>
         </tbody>
       );
@@ -33,6 +42,7 @@ class acadQualification extends React.Component {
                 <th>Position</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th>Actions</th>
               </tr>
             </thead>
             {workHistory}

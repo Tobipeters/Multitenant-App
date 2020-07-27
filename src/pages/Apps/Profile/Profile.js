@@ -5,7 +5,7 @@ import { Badge, Tabs, Tab } from 'react-bootstrap';
 import PersonalInfo from './profileComponents/PersonalInfo/personalInfo'
 import UserInfo from '../../../dummyData/userInformation'
 import ProfileImage from './profileComponents/profileImage'
-import AcademicQualification from './profileComponents/acadQualification'
+import AcademicQualification from './profileComponents/AcadQualification-Component/acadQualification'
 import WorkExperience from './profileComponents/workExperience';
 import ProfessionalQualification from './profileComponents\/profQualification'
 // import { userInfo } from 'os';
@@ -17,9 +17,12 @@ class Profile extends React.Component {
         this.state = {
             userData: UserInfo,
             skills: UserInfo[0].skills,
-            orgUnits: [UserInfo[0].orgUnit]
+            orgUnits: [UserInfo[0].orgUnit],
+        
+           
         }
         this.deletSkill = this.deletSkill.bind(this)
+        
     }
 
 
@@ -32,6 +35,8 @@ class Profile extends React.Component {
             skills: updatedSkills
         }))
     }
+
+
 
     render() {
         // console.log(this.state.userData)
@@ -101,7 +106,7 @@ class Profile extends React.Component {
 
 
         return (
-            <div classNameName="container">
+            <div>
                 {/* <!-- Main content --> */}
                 <section className="content">
                     <div className="content-header">
@@ -113,11 +118,6 @@ class Profile extends React.Component {
                             {/* <!-- Profile Image --> */}
                             <div className="box box-primary">
                                 <div className="box-body box-profile">
-                                    {/* <img
-                                        className="profile-user-img img-responsive img-circle"
-                                        src={ProfileAvatar}
-                                        alt="User profile picture"
-                                    /> */}
 
                                     <ProfileImage />
 
@@ -137,19 +137,6 @@ class Profile extends React.Component {
                                             </div>
                                         </li>
                                         {orgUnitList}
-                                        {/* <li className="list-group-item">
-                                            <div className="item-text">
-                                                <i className="fa fa-map-marker mr-2" aria-hidden="true"></i>
-                                                <span className="text-muted">Department</span>
-                                            </div>
-                                        </li>
-                                        <li className="list-group-item">
-                                            <div className="item-text">
-                                                <i className="fa fa-map-marker mr-2" aria-hidden="true"></i>
-                                                <span className="text-muted">Unit</span>
-                                            </div>
-                                        </li> */}
-
                                     </ul>
 
                                     <Link to="" className="btn btn-primary btn-block">
@@ -170,7 +157,7 @@ class Profile extends React.Component {
                                     <div>{
                                         this.state.skills.map((skill, id) => {
                                             return (
-                                                <Badge className="badge-color mr-1 mb-1" pill  variant="info">
+                                                <Badge className="badge-color mr-1 mb-1" pill  variant="info" key={id}>
                                                     {skill}
                                                     <i onClick={() => this.deletSkill(id)} class="fa fa-times ml-2 del-skill" aria-hidden="true"></i>
                                                 </Badge>
@@ -192,7 +179,7 @@ class Profile extends React.Component {
                                     <PersonalInfo />
                                 </Tab>
                                 <Tab className="tab-container" eventKey="AcademicQualifications" title="Academic Qualifications">
-                                    <AcademicQualification />
+                                    <AcademicQualification/>
                                 </Tab>
                                 <Tab className="tab-container" eventKey="professionalQualifications" title="Professional Qualifications" >
                                    <ProfessionalQualification />
@@ -207,7 +194,7 @@ class Profile extends React.Component {
                     {/* <!-- /.row --> */}
 
                 </section>
-                {/* <!-- /.content --> */}
+               
             </div>
         )
     }

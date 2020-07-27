@@ -32,15 +32,15 @@ class ProfileMenu extends Component {
                         <img className="rounded-circle header-profile-user" src={user4} alt="Header Avatar" />
                     </DropdownToggle>
                     <DropdownMenu right>
-                        <DropdownItem tag="a">
+                        <DropdownItem>
                             <Link to="/profile">
                             <i className="mdi mdi-account-circle font-size-17 align-middle mr-1"></i>
                             Profile
                             </Link>
                             </DropdownItem>
-                        <DropdownItem tag="a" href="#"><i className="mdi mdi-wallet font-size-17 align-middle mr-1"></i>My Wallet</DropdownItem>
-                        <DropdownItem tag="a" href="#"><span className="badge badge-success float-right">11</span><i className="mdi mdi-settings font-size-17 align-middle mr-1"></i>Settings</DropdownItem>
-                        <DropdownItem tag="a" href="#"><i className="mdi mdi-lock-open-outline font-size-17 align-middle mr-1"></i>Lock screen</DropdownItem>
+                        <DropdownItem><i className="mdi mdi-wallet font-size-17 align-middle mr-1"></i>My Wallet</DropdownItem>
+                        <DropdownItem ><span className="badge badge-success float-right">11</span><i className="mdi mdi-settings font-size-17 align-middle mr-1"></i>Settings</DropdownItem>
+                        <DropdownItem ><i className="mdi mdi-lock-open-outline font-size-17 align-middle mr-1"></i>Lock screen</DropdownItem>
                         <div className="dropdown-divider"></div>
                         <Link
                             to='/logout'

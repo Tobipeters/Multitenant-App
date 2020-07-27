@@ -49,8 +49,10 @@
     border-right:0;
     border-radius:0;
     padding-left:0;
-    padding-right:0
+    padding-right:0;
+    padding: .6rem .2rem;
 }
+
 .list-group-item .item-text{
     font-weight: 400;
 }
@@ -72,9 +74,9 @@
     margin: 0;
     line-height: 1;
 }
-.text-muted{
+/* .text-muted{
     margin: 0 0 10px;
-}
+} */
 .tabs-holder{
     background: #fff;
 }
@@ -152,4 +154,7 @@
 .del-skill:hover{
     background: #f11c1c;
     color: #fff;
+}
+.action-btn{
+    cursor: pointer;
 }

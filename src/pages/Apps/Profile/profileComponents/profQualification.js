@@ -1,5 +1,8 @@
 import React from "react";
 import ProfessionalData from "../../../../dummyData/qualificationData";
+import { Badge } from 'react-bootstrap'
+
+
 
 class acadQualification extends React.Component {
   constructor() {
@@ -8,8 +11,10 @@ class acadQualification extends React.Component {
       profs: ProfessionalData[0].profData,
     };
   }
+
+
+
   render() {
-      console.log(ProfessionalData[0].profData)
     const professionalHistory = this.state.profs.map((prof, id) => {
       return (
         <tbody>
@@ -18,6 +23,10 @@ class acadQualification extends React.Component {
             <td>{prof.institutionName}</td>
             <td>{prof.certificate}</td>
             <td>{prof.year}</td>
+            <td>
+              <Badge variant="success" className="mr-3 action-btn">Edit</Badge>
+              <Badge variant="danger" className="action-btn">Delete</Badge>
+            </td>
           </tr>
         </tbody>
       );
@@ -32,6 +41,7 @@ class acadQualification extends React.Component {
                 <th>Institution</th>
                 <th>Certificate</th>
                 <th>Year</th>
+                <th>Actions</th>
               </tr>
             </thead>
             {professionalHistory}
