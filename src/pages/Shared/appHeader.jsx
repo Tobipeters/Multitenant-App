@@ -1,12 +1,12 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
-import SettingMenu from "../../pages/Shared/SettingMenu";
+import SettingMenu from "./SettingMenu";
 import { Link } from "react-router-dom";
 
-
+ 
 const appHeader = (props) =>{
-
-    return (
+ 
+    return (   
         <div>
              <div className="page-title-box m-title-pad">
                     <h4 className="font-size-18">{props.title}</h4>

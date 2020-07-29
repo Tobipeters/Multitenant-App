@@ -4,7 +4,7 @@ import { Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import packages from '../../../../dummyData/packages';
 import Invoice from './PaymentComponents/invoice';
-import AppHeader from '../../../../newComponents/GeneralLayout/appHeader'
+import AppHeader from '../../../Shared/appHeader'
 
 class Billing extends React.Component {
     constructor(props) {

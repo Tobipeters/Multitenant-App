@@ -4,7 +4,7 @@ import { Row, Col, Card, CardBody } from 'reactstrap';
 import { MDBDataTable } from "mdbreact";
 import subHistory from '../../../../dummyData/tableData';
 import { MdDone } from "react-icons/md";
-import AppHeader from '../../../../newComponents/GeneralLayout/appHeader'
+import AppHeader from '../../../Shared/appHeader'
 
 class subscription extends React.Component {
     constructor() { 

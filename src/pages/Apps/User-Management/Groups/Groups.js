@@ -1,7 +1,7 @@
 import React from 'react'
-import AppHeader from '../../../../newComponents/GeneralLayout/appHeader'
+import AppHeader from '../../../Shared/appHeader'
 
-class Groups extends React.Component{
+class Groups extends React.Component{ 
     // constructor (){
     //     super()
     // }
