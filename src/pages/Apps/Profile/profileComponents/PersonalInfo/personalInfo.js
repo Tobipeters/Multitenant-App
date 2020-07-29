@@ -10,9 +10,18 @@ class personalInfo extends React.Component {
     super();
     this.state = {
       genders: ["Male", "Female", "Others"],
-      default_date: new Date(),
-      skillValues: "",
-      allSkills: [],
+
+      allSkills:"",
+      personalFormObject:{
+        firstName:"",
+        middleName:"",
+        lastName:"",
+        officialEmail:"",
+        personalEmail:"",
+        dateOfBirth:new Date(),
+        gender:"",
+        skills:[]
+      }
     };
 
     this.handleDefault = this.handleDefault.bind(this);
@@ -20,54 +29,73 @@ class personalInfo extends React.Component {
     this.handleSkillInput = this.handleSkillInput.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.deletSkill = this.deletSkill.bind(this);
+    this.handleDataInput = this.handleDataInput.bind(this)
+    this.submitPersonalInfo = this.submitPersonalInfo.bind(this)
   }
 
+  //onchange handler for picking date
   handleDefault(date) {
-    this.setState({ default_date: date });
+    this.setState(prevState =>({ 
+      personalFormObject:{
+        ...prevState.personalFormObject,
+        dateOfBirth: date,
+      } 
+    }));
   }
 
+//onchange handler for adding skills 
   handleSkillInput(e) {
-    const getValue = e.target.value;
     this.setState({
       skillValues: e.target.value,
     });
   }
 
+
+  //function to add new skills to field input field
   handleAdd() {
-    const mySkills = [];
     if (this.state.skillValues !== "") {
-      mySkills.push(this.state.skillValues);
       this.setState((prevState) => ({
-        allSkills: [...prevState.allSkills, mySkills],
+        personalFormObject:{
+          ...prevState.personalFormObject,
+          skills:[...prevState.personalFormObject.skills, prevState.skillValues]
+        },
         skillValues: "",
-      }));
+      }))
     }
   }
 
   deletSkill(id) {
     //Skills duplicaated array
-    const updatedSkills = [...this.state.allSkills];
+    const updatedSkills = [...this.state.personalFormObject.skills];
     updatedSkills.splice(id, 1);
     console.log(updatedSkills);
     this.setState((prevState) => ({
-      ...prevState,
-      allSkills: updatedSkills,
+      personalFormObject:{
+        ...prevState.personalFormObject,
+        skills:updatedSkills
+      },
+    
     }));
   }
 
-  // getSkillValue(e, code){
 
-  //     if(code ===188){
-  //         console.log('I am working')
-  //         if(this.value.length < 2){
-  //             console.log('Enter more than 2 character')
-  //         }else{
-  //             const enteredValue = this.value.subString(0, this.value.length - 1);
-  //             console.log(enteredValue)
-  //         }
-  //     }
+  //onchange handler for text input in the personal form data
+  //except date and skills (with different handler)
+  handleDataInput(event, ){
+    const value = event.target.value
+    const name = event.target.name
+    this.setState(prevState =>({
+      personalFormObject:{
+        ...prevState.personalFormObject,
+          [name]:value
+      }
+    }), console.log(this.state.personalFormObject))
+  }
 
-  // }
+  submitPersonalInfo(){
+    console.log(this.state.personalFormObject)
+  }
+
 
   render() {
     return (
@@ -76,17 +104,35 @@ class personalInfo extends React.Component {
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>First name</Form.Label>
-              <Form.Control size="sm" type="text" placeholder="First name" />
+              <Form.Control 
+              size="sm" 
+              type="text" 
+              placeholder="First name"
+              name="firstName"
+              value={this.state.personalFormObject.firstName}
+              onChange={this.handleDataInput} />
             </Form.Group>
 
             <Form.Group as={Col}>
               <Form.Label>Middle name</Form.Label>
-              <Form.Control size="sm" type="text" placeholder="Middle name" />
+              <Form.Control 
+              size="sm" 
+              type="text" 
+              placeholder="Middle name" 
+              name="middleName"
+              value={this.state.personalFormObject.middleName}
+              onChange={this.handleDataInput}/>
             </Form.Group>
 
             <Form.Group as={Col}>
               <Form.Label>Last name</Form.Label>
-              <Form.Control size="sm" type="text" placeholder="Last name" />
+              <Form.Control 
+              size="sm" 
+              type="text" 
+              placeholder="Last name" 
+              name="lastName"
+              value={this.state.personalFormObject.lastName}
+              onChange={this.handleDataInput} />
             </Form.Group>
           </Form.Row>
 
@@ -97,6 +143,9 @@ class personalInfo extends React.Component {
                 size="sm"
                 type="email"
                 placeholder="Edit your official email here"
+                name="officialEmail"
+              value={this.state.personalFormObject.officialEmail}
+              onChange={this.handleDataInput}
               />
             </Form.Group>
 
@@ -106,6 +155,9 @@ class personalInfo extends React.Component {
                 size="sm"
                 type="email"
                 placeholder="Edit your personal email here"
+                name="personalEmail"
+              value={this.state.personalFormObject.personalEmail}
+              onChange={this.handleDataInput}
               />
             </Form.Group>
 
@@ -113,7 +165,7 @@ class personalInfo extends React.Component {
               <Label> Date of birth </Label>
               <InputGroup>
                 <DatePicker
-                  selected={this.state.default_date}
+                  selected={this.state.personalFormObject.dateOfBirth}
                   className="form-control-sm date-control"
                   onChange={this.handleDefault}
                   placeholder="mm/dd/yyyy"
@@ -125,7 +177,13 @@ class personalInfo extends React.Component {
 
             <Form.Group as={Col}>
               <Form.Label>Gender</Form.Label>
-              <Form.Control size="sm" as="select">
+              <Form.Control 
+              size="sm" 
+              as="select"
+              name="gender"
+              value={this.state.personalFormObject.gender}
+              onChange={this.handleDataInput}
+              >
                 <option>Select Gender</option>
                 {this.state.genders.map((gender, id) => {
                   return <option key={id}> {gender} </option>;
@@ -158,7 +216,7 @@ class personalInfo extends React.Component {
           </Row>
           <Row>
             <div className="col col-lg-4 col-md-4 col-sm-12">
-              {this.state.allSkills.map((skill, id) => {
+              {this.state.personalFormObject.skills.map((skill, id) => {
                 return (
                   // <div className="mt-1 mb-1 mr-1">
                   <Badge className="mr-2 mb-2 mr-1 ml-1" pill variant="info">
@@ -175,7 +233,11 @@ class personalInfo extends React.Component {
             </div>
           </Row>
         </Form>
-        <button className="btn btn-primary add-btn">Save</button>
+        <button 
+        className="btn btn-primary add-btn"
+        onClick={this.submitPersonalInfo} >
+          Save
+          </button>
 
         {/*   Mobile form   */}
       </div>

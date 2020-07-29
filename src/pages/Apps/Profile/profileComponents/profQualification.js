@@ -20,8 +20,8 @@ class acadQualification extends React.Component {
         <tbody>
           <tr key={id}>
             <th scope="row">{prof.id}</th>
-            <td>{prof.institutionName}</td>
-            <td>{prof.certificate}</td>
+            <td>{prof.institution}</td>
+            <td>{prof.certification}</td>
             <td>{prof.year}</td>
             <td>
               <Badge variant="success" className="mr-3 action-btn">Edit</Badge>
@@ -34,7 +34,7 @@ class acadQualification extends React.Component {
     return (
       <div className="acad-container">
         <div className="table-responsive">
-          <table className="table mb-0">
+          <table className="table mb-0 data-table">
             <thead className="thead-light">
               <tr>
                 <th>S/N</th>

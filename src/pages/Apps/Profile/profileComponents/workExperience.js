@@ -34,7 +34,7 @@ class acadQualification extends React.Component {
     return (
       <div className="acad-container">
         <div className="table-responsive">
-          <table className="table mb-0">
+          <table className="table mb-0 data-table">
             <thead className="thead-light">
               <tr>
                 <th>S/N</th>
