@@ -2,13 +2,13 @@ import React from 'react';
 import './Profile.css';
 import { Link } from 'react-router-dom';
 import { Badge, Tabs, Tab } from 'react-bootstrap';
-import PersonalInfo from './profileComponents/PersonalInfo/personalInfo'
+import PersonalInfo from './profileComponents/personalInfo'
 import UserInfo from '../../../dummyData/userInformation'
 import ProfileImage from './profileComponents/profileImage'
-import AcademicQualification from './profileComponents/AcadQualification-Component/acadQualification'
+import AcademicQualification from './profileComponents/acadQualification'
 import WorkExperience from './profileComponents/workExperience';
-import ProfessionalQualification from './profileComponents\/profQualification'
-// import { userInfo } from 'os';
+import ProfessionalQualification from './profileComponents/profQualification'
+import AppHeader from '../../Shared/appHeader'
 
 
 class Profile extends React.Component {
@@ -18,11 +18,11 @@ class Profile extends React.Component {
             userData: UserInfo,
             skills: UserInfo[0].skills,
             orgUnits: [UserInfo[0].orgUnit],
-        
-           
+
+
         }
         this.deletSkill = this.deletSkill.bind(this)
-        
+
     }
 
 
@@ -42,9 +42,9 @@ class Profile extends React.Component {
         // console.log(this.state.userData)
         const countUnit = this.state.orgUnits
         const count = this.state.orgUnits[0].length;
-      
+
         const checkOrgUnit = () => {
-         
+
             switch (count) {
                 case 3:
                     return (
@@ -67,7 +67,7 @@ class Profile extends React.Component {
                                     <span className="text-muted float-right">{countUnit[0][2].name}</span>
                                 </div>
                             </li>
-                            </>  
+                        </>
                     );
                 case 2:
                     return (
@@ -86,32 +86,40 @@ class Profile extends React.Component {
                             </li>
                         </>
                     );
-                    case 1:
-                        return (
-                            <>
-                                <li className="list-group-item">
-                                    <div className="item-text">
-                                        <span className="text-muted">Department:</span>
-                                        <span className="text-muted float-right">{countUnit[0][0].name}</span>
-                                    </div>
-                                </li>
-                            </>
-                        );
+                case 1:
+                    return (
+                        <>
+                            <li className="list-group-item">
+                                <div className="item-text">
+                                    <span className="text-muted">Department:</span>
+                                    <span className="text-muted float-right">{countUnit[0][0].name}</span>
+                                </div>
+                            </li>
+                        </>
+                    );
                 default:
                     break;
             }
         }
 
-      const orgUnitList = checkOrgUnit();
+        const orgUnitList = checkOrgUnit();
 
 
         return (
             <div>
                 {/* <!-- Main content --> */}
                 <section className="content">
-                    <div className="content-header">
+                    {/* <div className="content-header">
                         <h3 className="font-size-18">User profile</h3>
-                    </div>
+                    </div> */}
+                    {/* header with breadcrumbs for profile page */}
+                    <AppHeader
+                        title={"User profile"}
+                        breadcrumbMain={"Dashboard"}
+                        breadcrumbSubMain={"User profile"}
+                        allMenu={'setting-menu-for-each-page-comes-in-here'}
+                    />
+
                     <div className="row">
                         <div className="col-md-3">
 
@@ -157,9 +165,9 @@ class Profile extends React.Component {
                                     <div>{
                                         this.state.skills.map((skill, id) => {
                                             return (
-                                                <Badge className="badge-color mr-1 mb-1" pill  variant="info" key={id}>
+                                                <Badge className="badge-color mr-1 mb-1" pill variant="info" key={id}>
                                                     {skill}
-                                                    <i onClick={() => this.deletSkill(id)} class="fa fa-times ml-2 del-skill" aria-hidden="true"></i>
+                                                    <i onClick={() => this.deletSkill(id)} className="fa fa-times ml-2 del-skill" aria-hidden="true"></i>
                                                 </Badge>
                                             )
                                         })
@@ -179,13 +187,13 @@ class Profile extends React.Component {
                                     <PersonalInfo />
                                 </Tab>
                                 <Tab className="tab-container" eventKey="AcademicQualifications" title="Academic Qualifications">
-                                    <AcademicQualification/>
+                                    <AcademicQualification />
                                 </Tab>
                                 <Tab className="tab-container" eventKey="professionalQualifications" title="Professional Qualifications" >
-                                   <ProfessionalQualification />
+                                    <ProfessionalQualification />
                                 </Tab>
                                 <Tab className="tab-container" eventKey="workExperience" title="Work Experience" >
-                                   <WorkExperience />
+                                    <WorkExperience />
                                 </Tab>
                             </Tabs>
                         </div>
@@ -194,7 +202,7 @@ class Profile extends React.Component {
                     {/* <!-- /.row --> */}
 
                 </section>
-               
+
             </div>
         )
     }

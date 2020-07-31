@@ -136,6 +136,41 @@
     float: right;
 } 
 
+/*
+*The styling below is for the personal info componenet
+*/
+
+.react-datepicker-wrapper .form-control{
+    width: 100% !important ;
+}
+.react-datepicker-wrapper {
+    width:100% !important;
+}
+.react-datepicker-wrapper .form-control{
+    width: 100% !important ;
+}
+
+.date-control{
+    width: 100% !important ;
+}
+.mobile-form{
+    display:none;
+}
+.save-image{
+    display: block !important;
+    margin: 2% auto;
+    padding: 0.2% 5%;
+}
+.add-btn-container{
+    position: relative;
+}
+.row>div>.add-skill{
+    position: absolute;
+    bottom: 0;
+    padding: 0.25rem 0.7rem;
+
+}
+
 /* the styling below is for academic, professional qualification and work experience component */
 .add-btn{
     width: fit-content;
@@ -161,4 +196,20 @@
 .data-table th, .data-table td{
     padding: .6rem !important;
     font-size: 13px;
+}
+
+
+@media screen and (max-width:768px){
+    .list-group-item + .list-group-item {
+        font-size: 12px;
+    }
+    .profile-username{
+        font-size: 1.05rem;
+}
+    .desktop-form{
+        display:block;
+    }
+    .mobile-form{
+        display: block;
+    }
 }

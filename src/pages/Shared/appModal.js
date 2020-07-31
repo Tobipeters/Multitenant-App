@@ -1,7 +1,8 @@
 import React from 'react'
 import { Modal } from 'reactstrap'
 
-class AcademicModal extends React.Component{
+
+class AppModal extends React.Component{
     constructor (props){
         super(props)
         
@@ -15,6 +16,7 @@ class AcademicModal extends React.Component{
             <Modal
             isOpen={this.props.openModal}
             toggle={this.props.toggleModal}
+            backdrop={this.props.backdrop}
           >
             <div className="modal-header">
               <h5 className="modal-title mt-0">{this.props.modalHeader}</h5>
@@ -36,4 +38,4 @@ class AcademicModal extends React.Component{
     }
 }
 
-export default AcademicModal;
+export default AppModal;

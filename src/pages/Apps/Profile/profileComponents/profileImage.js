@@ -1,6 +1,5 @@
 import React from 'react'
 import ProfileAvatar from '../../../../assets/images/user-avatar_.png'
-import './PersonalInfo/personalInfo.css'
 
 class profileImage extends React.Component {
     constructor(props) {
@@ -29,9 +28,9 @@ class profileImage extends React.Component {
               <button className="close-btn" onClick={this.resetFile}>X</button>
             </div>
           )}
-              <img className="profile-user-img img-responsive img-circle" alt="User profile picture" src={this.state.file} />
+              <img className="profile-user-img img-responsive img-circle" alt="Userpicture" src={this.state.file} />
               <input type="file" onChange={this.onChange} title="click to upload picture"/>
-              <button class="btn btn-info waves-effect waves-light btn save-image"><i className="far fa-save"></i></button>
+              <button className="btn btn-info waves-effect waves-light btn save-image"><i className="far fa-save"></i></button>
         </div>
       );
     }

@@ -3,7 +3,6 @@ import { Form, Col, Row, Badge } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import { InputGroup, Label } from "reactstrap";
 import "react-datepicker/dist/react-datepicker.css";
-import "./personalInfo.css";
 
 class personalInfo extends React.Component {
   constructor() {
@@ -53,11 +52,12 @@ class personalInfo extends React.Component {
 
   //function to add new skills to field input field
   handleAdd() {
+    const commaSeparatedSkills = this.state.skillValues.split(',')
     if (this.state.skillValues !== "") {
       this.setState((prevState) => ({
         personalFormObject:{
           ...prevState.personalFormObject,
-          skills:[...prevState.personalFormObject.skills, prevState.skillValues]
+          skills:[...prevState.personalFormObject.skills, ...commaSeparatedSkills]
         },
         skillValues: "",
       }))
@@ -81,7 +81,7 @@ class personalInfo extends React.Component {
 
   //onchange handler for text input in the personal form data
   //except date and skills (with different handler)
-  handleDataInput(event, ){
+  handleDataInput(event){
     const value = event.target.value
     const name = event.target.name
     this.setState(prevState =>({
@@ -194,7 +194,10 @@ class personalInfo extends React.Component {
 
           <Row>
             <div className="col col-lg-4 col-md-4 col-sm-12">
-              <Form.Label>Enter Skills</Form.Label>
+              <Form.Label>
+                Enter Skills 
+                <small>(Separated with comma)</small>
+                </Form.Label>
               <Form.Control
                 id="mySkill"
                 size="sm"
@@ -219,11 +222,11 @@ class personalInfo extends React.Component {
               {this.state.personalFormObject.skills.map((skill, id) => {
                 return (
                   // <div className="mt-1 mb-1 mr-1">
-                  <Badge className="mr-2 mb-2 mr-1 ml-1" pill variant="info">
+                  <Badge className="mr-2 mb-2 mr-1 ml-1" pill variant="info" key={id}>
                     {skill}
                     <i
                       onClick={() => this.deletSkill(id)}
-                      class="fa fa-times ml-2 del-skill"
+                      className="fa fa-times ml-2 del-skill"
                       aria-hidden="true"
                     ></i>
                   </Badge>
@@ -233,6 +236,7 @@ class personalInfo extends React.Component {
             </div>
           </Row>
         </Form>
+        <hr />
         <button 
         className="btn btn-primary add-btn"
         onClick={this.submitPersonalInfo} >

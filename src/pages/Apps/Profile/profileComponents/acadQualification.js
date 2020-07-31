@@ -1,8 +1,7 @@
 import React from "react";
-import academicData from "../../../../../dummyData/qualificationData";
+import academicData from "../../../../dummyData/qualificationData";
 import { Badge, Form, InputGroup, FormControl } from 'react-bootstrap'
-import { Modal } from "reactstrap"
-import AcademicModal from "./acadModal";
+import AcademicModal from "../../../Shared/appModal";
 
 class acadQualification extends React.Component {
   constructor(props) {
@@ -55,8 +54,6 @@ class acadQualification extends React.Component {
         year: this.state.acads[dataId].year
       },
     }));
-
-
   }
 
   //Function to trigger modal for Adding more academic qualification
@@ -313,6 +310,7 @@ class acadQualification extends React.Component {
             </thead>
             {academicHistory}
           </table>
+          <hr />
         </div>
         <button
           className="btn btn-primary add-btn"
@@ -325,6 +323,7 @@ class acadQualification extends React.Component {
         <AcademicModal
           openModal={this.state.modal_add}
           toggleModal={this.addTableData}
+          backdrop={true}
           modalBody={this.addAcademicQualificationModal()}
           modalHeader="Add Academic Qualification"
           closeModal={this.closeAddModal}
@@ -336,6 +335,7 @@ class acadQualification extends React.Component {
         <AcademicModal
           openModal={this.state.modal_center}
           toggleModal={this.editTableData}
+          backdrop="static"
           modalBody={this.academicQualificationModal()}
           modalHeader="Edit Academic Qualification"
           closeModal={this.closeEditModal}
