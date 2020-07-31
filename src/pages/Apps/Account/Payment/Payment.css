@@ -64,3 +64,44 @@ ul{
 .trans-status>div>span:last-child:after{
     content: "";
 }
+
+/* Below are the styling for Invoice component */
+.list-group{
+    padding-left: 0;
+    margin-bottom: 20px !important;
+}
+.list-group-unbordered>.list-group-item{
+    border-left:0;
+    border-right:0;
+    border-radius:0;
+    padding-left:0;
+    padding-right:0;
+    padding: .6rem .2rem;
+}
+
+.list-group-item .item-text{
+    font-weight: 400;
+}
+.transaction-status{
+    text-align: center;
+}
+.transaction-status>p{
+    padding: .4rem 0;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+.trans-success-badge{
+    background-color: #28a745;
+    color: #fff !important;
+    border-radius: 50% !important;
+    padding: .4rem .6rem .3rem .5rem !important;
+}
+.trans-success-badge>i{
+    font-size: 1.75rem;
+    font-weight:600 ;
+}
+.modal-body>button{
+    margin: 0 0 0 auto;
+    display: block;
+}

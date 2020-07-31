@@ -7,7 +7,7 @@ class AppModal extends React.Component{
         super(props)
         
         this.state={
-            modal_center:false,
+            modal_center:false, 
         }
     }
 
@@ -19,7 +19,7 @@ class AppModal extends React.Component{
             backdrop={this.props.backdrop}
           >
             <div className="modal-header">
-              <h5 className="modal-title mt-0">{this.props.modalHeader}</h5>
+              <h4 className="modal-title mt-0">{this.props.modalHeader}</h4>
               <button
                 type="button"
                 onClick={()=>this.props.closeModal()}

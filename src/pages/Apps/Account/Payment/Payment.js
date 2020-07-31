@@ -8,29 +8,32 @@ import AppHeader from '../../../Shared/appHeader'
 
 class Billing extends React.Component {
     constructor(props) {
-        super(props) 
+        super(props)
         this.state = {
             expandHeight: '250px',
         }
         this.toogleHeight = this.toogleHeight.bind(this);
     }
 
-    toogleHeight() {
-        if (this.state.expandHeight === '250px') {
-            this.setState({
-                expandHeight: 'fit-content'
-            })
-        } else {
-            this.setState({
-                expandHeight: '250px'
-            })
-        }
+    toogleHeight(id) {
+        // console.log(id)
+        // if (id) {
+            if (this.state.expandHeight === '250px') {
+                this.setState({
+                    expandHeight: 'fit-content'
+                })
+            } else {
+                this.setState({
+                    expandHeight: '250px'
+                })
+            }
+        // }
     };
-    
+
 
 
     render() {
-        let packageLists = packages.map((packageList) => {
+        let packageLists = packages.map((packageList, id) => {
             return (
                 <Col xl={3} md={6} key={packageList.id}>
                     <Card className="pricing-box price-card">
@@ -54,9 +57,9 @@ class Billing extends React.Component {
                                         })}
                                 </div>
                                 <div className="mt-2 mb-2">
-                                    <div 
-                                    onClick={this.toogleHeight} 
-                                    className="expand-features"
+                                    <div
+                                        onClick={() => this.toogleHeight(id)}
+                                        className="expand-features"
                                     >
                                         <i className="fa fa-angle-down mr-2" aria-hidden="true"></i>
                                         <span>Expand packages</span>
@@ -86,14 +89,14 @@ class Billing extends React.Component {
                 </Col>
             )
         });
-        console.log(packageLists)
+        // console.log(packageLists)
         return (
             <div className="container-fluid">
-                 <AppHeader
-                title={"Payment"}
-                breadcrumbMain={"Account"}
-                breadcrumbSubMain={"Payment"}
-                allMenu={'setting-menu-for-each-page-comes-in-here'}
+                <AppHeader
+                    title={"Payment"}
+                    breadcrumbMain={"Account"}
+                    breadcrumbSubMain={"Payment"}
+                    allMenu={'setting-menu-for-each-page-comes-in-here'}
                 />
 
                 {/* Pricing packages start here */}

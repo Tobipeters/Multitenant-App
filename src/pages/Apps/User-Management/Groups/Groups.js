@@ -8,7 +8,7 @@ class Groups extends React.Component{
 
     render(){
         return (
-            <div className="container">
+            <div className="container-fluid">
                  <AppHeader
                 title={"Groups"}
                 breadcrumbMain={"User Management"}

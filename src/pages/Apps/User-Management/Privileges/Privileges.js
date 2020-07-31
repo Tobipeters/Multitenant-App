@@ -8,7 +8,7 @@ class Privileges extends React.Component{
 
     render(){
         return (
-            <div className="container">
+            <div className="container-fluid">
                  <AppHeader
                 title={"Privileges"}
                 breadcrumbMain={"User Management"}
