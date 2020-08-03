@@ -17,6 +17,7 @@ class AppModal extends React.Component{
             isOpen={this.props.openModal}
             toggle={this.props.toggleModal}
             backdrop={this.props.backdrop}
+            unmountOnClose={true}
           >
             <div className="modal-header">
               <h4 className="modal-title mt-0">{this.props.modalHeader}</h4>

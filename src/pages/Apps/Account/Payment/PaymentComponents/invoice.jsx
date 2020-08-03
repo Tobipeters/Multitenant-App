@@ -20,7 +20,6 @@ class Invoice extends React.Component {
         this.closeModal = this.closeModal.bind(this);
     }
 
-
     removeBodyCss() {
         document.body.classList.add("no_padding");
     }
@@ -31,7 +30,6 @@ class Invoice extends React.Component {
             selectedInvoice: id
         }));
         this.removeBodyCss();
-
     };
 
     closeModal() {
@@ -78,9 +76,7 @@ class Invoice extends React.Component {
                             </div>
                         </li>
                     </ul>
-
                     <button className="btn btn-primary ">Print Receipt</button>
-
                 </div>
             );
         }
@@ -88,7 +84,6 @@ class Invoice extends React.Component {
 
 
     render() {
-
         const invoiceList = this.state.invoices.map((invoice, id) => {
             return (
                 <div key={id} className="trans-list">
@@ -103,20 +98,16 @@ class Invoice extends React.Component {
                             <span> {invoice.transactionId} </span>
                         </div>
                         <span className="trans-more">
-                            <Link to="" onClick={() => this.tog_center(id)}>more</Link>
+                            <Link to="#" onClick={() => this.tog_center(id)}>more</Link>
                         </span>
                     </div>
                 </div>
             );
         });
 
-
-
-
         return (
             <div className="bottom-space">
                 {invoiceList}
-
                 {/* Invoive modal start here */}
                 <InvoiceModal
                     openModal={this.state.modal_center}
@@ -126,7 +117,6 @@ class Invoice extends React.Component {
                     modalHeader="Transaction details"
                     closeModal={this.closeModal}
                 />
-
             </div>
         )
     }

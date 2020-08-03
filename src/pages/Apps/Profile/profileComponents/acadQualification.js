@@ -56,6 +56,8 @@ class acadQualification extends React.Component {
     }));
   }
 
+  
+
   //Function to trigger modal for Adding more academic qualification
   addTableData() {
     this.setState(prevState => ({

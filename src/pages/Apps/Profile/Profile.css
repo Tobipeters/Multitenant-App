@@ -198,6 +198,15 @@
     font-size: 13px;
 }
 
+/* 
+*styling for document component
+*/
+.errorMsg{
+    display: block;
+    color: #ec4561;
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
 
 @media screen and (max-width:768px){
     .list-group-item + .list-group-item {

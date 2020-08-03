@@ -8,6 +8,7 @@ import ProfileImage from './profileComponents/profileImage'
 import AcademicQualification from './profileComponents/acadQualification'
 import WorkExperience from './profileComponents/workExperience';
 import ProfessionalQualification from './profileComponents/profQualification'
+import Document from './profileComponents/document'
 import AppHeader from '../../Shared/appHeader'
 
 
@@ -194,6 +195,9 @@ class Profile extends React.Component {
                                 </Tab>
                                 <Tab className="tab-container" eventKey="workExperience" title="Work Experience" >
                                     <WorkExperience />
+                                </Tab>
+                                <Tab className="tab-container" eventKey="document" title="Document" >
+                                    <Document />
                                 </Tab>
                             </Tabs>
                         </div>
