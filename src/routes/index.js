@@ -8,6 +8,7 @@ import Login from "../pages/Authentication/Login";
 import Logout from "../pages/Authentication/Logout";
 import Register from "../pages/Authentication/Register";
 import ForgetPwd from "../pages/Authentication/FogetPassword";
+import ResetPassword from "../pages/Authentication/ResetPassword"
 
 import Dashboard from "../pages/Dashboard";
 
@@ -118,6 +119,7 @@ const authProtectedRoutes = [
   { path: "/user-management-groups", component: Groups },
   { path: "/user-management-privileges", component: Privileges },
   { path: "/profile", component: Profile },
+ 
 
   // Email & Email Templates
   { path: "/email-inbox", component: EmailInbox },
@@ -205,6 +207,7 @@ const publicRoutes = [
   { path: "/login", component: Login },
   { path: "/forget-password", component: ForgetPwd },
   { path: "/pages-register", component: Register },
+  { path:"/reset-password", component: ResetPassword },
 
   // Extra Pages
   { path: "/pages-login-2", component: PagesLogin2 },

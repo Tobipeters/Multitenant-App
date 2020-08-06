@@ -2,6 +2,20 @@ import React from "react";
 import WorkExData from "../../../../dummyData/qualificationData";
 import { Badge, Form, InputGroup, FormControl } from 'react-bootstrap'
 import WorkExperienceModal from '../../../Shared/appModal'
+import { Formik, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+
+const Schema = Yup.object().shape({
+  company: Yup.string()
+    .required(" "),
+  position: Yup.string()
+    .required(" "),
+  startDate: Yup.string()
+    .required(" "),
+  endDate: Yup.string()
+    .required(" "),
+});
+
 
 class acadQualification extends React.Component {
   constructor() {
@@ -18,6 +32,18 @@ class acadQualification extends React.Component {
         startDate: "",
         endDate: ""
       },
+      //setting state for error messages on submit
+      validationError: {
+        label: {
+          company: "company is required *",
+          position: "position is required *",
+          startDate: "start date is required *",
+          endDate: "end date is required *"
+        },
+        //controller
+        class: 'errorMsg',
+        display: 'none'
+      }
     };
 
     this.deleteTableData = this.deleteTableData.bind(this)
@@ -182,59 +208,112 @@ class acadQualification extends React.Component {
   addWorkExperienceModal = () => {
     return (
       <div className="modal-body">
-        <Form>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >Company</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="text"
-              placeholder="Add Company"
-              name="company"
-              value={this.state.workDataObject.company}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >Position</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="text"
-              placeholder="Add Position"
-              name="position"
-              value={this.state.workDataObject.position}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
+        <Formik
+          validationSchema={Schema}
+          onSubmit={this.submitProfessionalData}
+          initialValues={{
+            company: '',
+            position: '',
+            startDate: '',
+            endDate: ''
+          }}
+        >
+          {({
+            handleSubmit,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
+              <Form onSubmit={this.submitWorkExData}>
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >Company</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="text"
+                    placeholder="Add Company"
+                    name="company"
+                    value={this.state.workDataObject.company}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.company ? "is-invalid" : ""
+                      }`}
+                  />
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.company}
+                </small>
 
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >Start Date</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="text"
-              placeholder="Enter Start date (Month, Year)"
-              name="startDate"
-              value={this.state.workDataObject.startDate}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >Position</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="text"
+                    placeholder="Add Position"
+                    name="position"
+                    value={this.state.workDataObject.position}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.position ? "is-invalid" : ""
+                      }`}
+                  />
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.position}
+                </small>
 
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >End Date</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="text"
-              placeholder="Enter End date (Month, Year)"
-              name="endDate"
-              value={this.state.workDataObject.endDate}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
-        </Form>
-        <button className="btn btn-primary add-btn btn-add-new" onClick={this.submitWorkExData}>Add New</button>
+
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >Start Date</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="text"
+                    placeholder="Enter Start date (Month, Year)"
+                    name="startDate"
+                    value={this.state.workDataObject.startDate}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.startDate ? "is-invalid" : ""
+                      }`}
+                  />
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.startDate}
+                </small>
+
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >End Date</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="text"
+                    placeholder="Enter End date (Month, Year)"
+                    name="endDate"
+                    value={this.state.workDataObject.endDate}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.endDate ? "is-invalid" : ""
+                      }`}
+                  />
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.endDate}
+                </small>
+
+
+                <button type="submit" className="btn btn-primary add-btn btn-add-new">Add New</button>
+              </Form>
+            )}
+        </Formik>
       </div>
     )
   }
@@ -255,8 +334,27 @@ class acadQualification extends React.Component {
   }
 
   //submit new professional qualification data
-  submitWorkExData() {
-    console.log(this.state.workDataObject)
+  submitWorkExData(event) {
+    event.preventDefault()
+    if (this.state.workDataObject.company === "" ||
+      this.state.workDataObject.position === "" ||
+      this.state.workDataObject.startDate=== "" ||
+      this.state.workDataObject.endDate=== "") {
+      this.setState(prevState => ({
+        validationError: {
+          ...prevState.validationError,
+          display: 'block'
+        }
+      }))
+    } else {
+      this.setState(prevState => ({
+        validationError: {
+          ...prevState.validationError,
+          display: 'none'
+        }
+      }))
+      console.log(this.state.workDataObject)
+    }
   }
 
 
@@ -306,9 +404,9 @@ class acadQualification extends React.Component {
             {workHistory}
           </table>
         </div>
-        <button 
-        className="btn btn-primary add-btn"
-        onClick={() => this.addTableData()}
+        <button
+          className="btn btn-primary add-btn"
+          onClick={() => this.addTableData()}
         >Add more</button>
 
         {/* Work Experience modal for Adding work data start here */}

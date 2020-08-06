@@ -207,6 +207,10 @@
     margin-top: -15px;
     margin-bottom: 10px;
 }
+.errMsg{
+    display: block;
+    color: #ec4561;
+}
 
 @media screen and (max-width:768px){
     .list-group-item + .list-group-item {

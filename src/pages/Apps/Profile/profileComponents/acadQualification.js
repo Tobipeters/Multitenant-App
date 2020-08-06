@@ -2,6 +2,26 @@ import React from "react";
 import academicData from "../../../../dummyData/qualificationData";
 import { Badge, Form, InputGroup, FormControl } from 'react-bootstrap'
 import AcademicModal from "../../../Shared/appModal";
+import * as Yup from "yup";
+import { Formik, Field, ErrorMessage } from "formik";
+
+
+
+const Schema = Yup.object().shape({
+  institution: Yup.string()
+    .required(" ")
+    .min(2, "Enter valid institution name"),
+  certification: Yup.string()
+    .required(" ")
+    .min(2, "Enter valid certification"),
+  course: Yup.string()
+    .required(" ")
+    .min(2, "Enter a valid course of study"),
+  year: Yup.string()
+    .required(" ")
+    .min(2, "Year is invalid"),
+});
+
 
 class acadQualification extends React.Component {
   constructor(props) {
@@ -20,7 +40,18 @@ class acadQualification extends React.Component {
         course: "",
         year: ""
       },
-     
+      //setting state for error messages on submit
+      validationError: {
+        label: {
+          institution: "Institution is required *",
+          certification: "certification is required *",
+          course: "course is required *",
+          year: "year is required *"
+        },
+        //controller
+        class: 'errorMsg',
+        display: 'none'
+      }
     };
 
     this.editTableData = this.editTableData.bind(this)
@@ -56,7 +87,7 @@ class acadQualification extends React.Component {
     }));
   }
 
-  
+
 
   //Function to trigger modal for Adding more academic qualification
   addTableData() {
@@ -90,7 +121,7 @@ class acadQualification extends React.Component {
 
   //input form for Editing data in the modal body
   academicQualificationModal = () => {
-    
+
 
     if (this.state.selectDataId !== null) {
       const editData = this.state.modalData
@@ -162,64 +193,138 @@ class acadQualification extends React.Component {
   addAcademicQualificationModal = () => {
     return (
       <div className="modal-body">
-        <Form>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >Institution</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="text"
-              placeholder="Add Institution"
-              name="institution"
-              value={this.state.acadDataObject.institution}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >Certification</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="text"
-              placeholder="Add Certification"
-              name="certification"
-              value={this.state.acadDataObject.certification}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
+        <Formik
+          validationSchema={Schema}
+          onSubmit={this.submitAcademicData}
+          initialValues={{
+            institution: '',
+            certification: '',
+            course: '',
+            year: ''
+          }}
+        >
+          {({
+            handleSubmit,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
+              <Form onSubmit={this.submitAcademicData}>
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >Institution</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="text"
+                    placeholder="Add Institution"
+                    name="institution"
+                    value={this.state.acadDataObject.institution}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.institution ? "is-invalid" : ""
+                      }`}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="institution"
+                    className="invalid-feedback"
+                  />
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.institution}
+                </small>
 
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >Course</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="text"
-              placeholder="Add Course"
-              name="course"
-              value={this.state.acadDataObject.course}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
 
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >Year</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="number"
-              placeholder="Add Year"
-              name="year"
-              value={this.state.acadDataObject.year}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
-        </Form>
-        <button className="btn btn-primary add-btn btn-add-new" onClick={this.submitAcademicData}>Add New</button>
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >Certification</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="text"
+                    placeholder="Add Certification"
+                    name="certification"
+                    value={this.state.acadDataObject.certification}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.certification ? "is-invalid" : ""
+                      }`}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="certification"
+                    className="invalid-feedback"
+                  />
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.certification}
+                </small>
+
+
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >Course</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="text"
+                    placeholder="Add Course"
+                    name="course"
+                    value={this.state.acadDataObject.course}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.course ? "is-invalid" : ""
+                      }`}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="course"
+                    className="invalid-feedback"
+                  />
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.course}
+                </small>
+
+
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >Year</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="number"
+                    placeholder="Add Year"
+                    name="year"
+                    value={this.state.acadDataObject.year}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.year ? "is-invalid" : ""
+                      }`}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="year"
+                    className="invalid-feedback"
+                  />
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.year}
+                </small>
+
+                <button type="submit" className="btn btn-primary add-btn btn-add-new" >Add New</button>
+              </Form>
+            )}
+        </Formik>
       </div>
     )
   }
 
-  //Function to handle input to add academic qualification 
+  //Function to handle input to add academic qualification
   handleAddNew(event) {
     const value = event.target.value;
     const name = event.target.name
@@ -256,8 +361,27 @@ class acadQualification extends React.Component {
   }
 
   //submit new academic qualification data
-  submitAcademicData() {
-    console.log(this.state.acadDataObject)
+  submitAcademicData(event) {
+    event.preventDefault()
+    if (this.state.acadDataObject.institution === "" ||
+      this.state.acadDataObject.certification === "" ||
+      this.state.acadDataObject.course === "" ||
+      this.state.acadDataObject.year === "") {
+        this.setState(prevState =>({
+          validationError:{
+            ...prevState.validationError,
+            display:'block'
+          }
+        }))
+    } else {
+      this.setState(prevState => ({
+        validationError: {
+          ...prevState.validationError,
+          display: 'block'
+        }
+      }))
+      console.log(this.state.acadDataObject)
+    }
   }
 
 
@@ -316,7 +440,7 @@ class acadQualification extends React.Component {
         </div>
         <button
           className="btn btn-primary add-btn"
-        onClick={()=>this.addTableData()}
+          onClick={() => this.addTableData()}
         >
           Add more
         </button>

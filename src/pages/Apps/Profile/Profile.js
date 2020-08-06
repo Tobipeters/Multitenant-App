@@ -148,9 +148,9 @@ class Profile extends React.Component {
                                         {orgUnitList}
                                     </ul>
 
-                                    <Link to="" className="btn btn-primary btn-block">
+                                    {/* <Link to="" className="btn btn-primary btn-block">
                                         <b>Edit profile</b>
-                                    </Link>
+                                    </Link> */}
                                 </div>
                                 {/* <!-- /.box-body --> */}
                             </div>

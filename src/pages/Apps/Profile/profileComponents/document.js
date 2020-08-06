@@ -28,13 +28,19 @@ class Document extends React.Component {
                 type: "",
             },
             modal_add: false,
-            errorStyle: "",
+            errorStyle: "errorMsg",
             errorMsg: {
-                name: '',
-                document: '',
-                type: ''
+                name: 'Name is required *',
+                document: 'Choose a file to upload *',
+                type: 'Select a document type *'
             },
-            errorDisplay: "none"
+            errorDisplay: "none",
+            //Error message for file cancellation during upload
+            fileError: {
+                display: 'none',
+                label: 'Choose a file to upload *',
+                class: 'errorMsg'
+            }
         }
         this.fileInput = React.createRef();
         this.closeAddModal = this.closeAddModal.bind(this)
@@ -57,6 +63,11 @@ class Document extends React.Component {
     closeAddModal() {
         this.setState(prevState => ({
             modal_add: !prevState.modal_add,
+            documentData: {
+                name: "",
+                document: null,
+                type: "",
+            },
         }))
     }
 
@@ -64,52 +75,62 @@ class Document extends React.Component {
     handleAddEvent(event) {
         const value = event.target.value;
         const name = event.target.name;
+        console.log(value)
         this.setState(prevState => ({
             documentData: {
                 ...prevState.documentData,
                 [name]: value
             }
         }))
+        console.log(this.state.documentData)
     }
 
+    //handle event to get selected file 
     handleFile(event) {
         event.preventDefault();
-
-
-        this.setState({
-            documentData: {
-                document: this.fileInput.current.files[0].name
-            }
-        })
+        const fileData = this.fileInput.current.files.length
+        if (fileData >= 1) {
+            this.setState(prevState => ({
+                documentData: {
+                    ...prevState.documentData,
+                    document: this.fileInput.current.files[0].name,
+                },
+                //Ignore error when file is picked successfully
+                fileError: {
+                    ...prevState.fileError,
+                    display: 'none'
+                }
+            }))
+        } else {
+            //setting state for cancellation during file upload
+            this.setState(prevState => ({
+                ...prevState,
+                fileError: {
+                    ...prevState.fileError,
+                    display:'block'
+                }
+            }))
+        }
     }
 
     submitDocumentData(event) {
         event.preventDefault()
         const file = this.state.documentData.document
         const type = this.state.documentData.type
-
+        //on submit when file isn't picked and type isn;t selevcetd, error messgae should be logged
         if (file === null || type === "") {
-            this.setState({
-                errorStyle: "errorMsg",
+            this.setState(prevState => ({
+                ...prevState,
                 errorDisplay: "block",
-                errorMsg: {
-                    name: 'Name is required *',
-                    document: 'Choose a file to upload *',
-                    type: 'Select a document type *'
-                }
-            })
-            console.log(this.state.errorMsg)
+            }))
         } else {
-            this.setState({
+            this.setState(prevState => ({
+                ...prevState,
                 errorDisplay: "none",
-                errorMsg: {
-                    name: '',
-                    document: '',
-                    type: ''
-                }
-            })
+            }))
             console.log(this.state.documentData)
         }
+
     }
 
     //input form for Adding data in the modal body
@@ -141,7 +162,7 @@ class Document extends React.Component {
                                         value={this.state.documentData.name}
                                         onChange={this.handleAddEvent}
                                         className={`form-control ${
-                                            touched.name && errors.name ? "is-invalid" : ""
+                                            touched.name ? "is-invalid" : ""
                                             }`}
                                     />
                                     <ErrorMessage
@@ -153,23 +174,6 @@ class Document extends React.Component {
                                 <small className={this.state.errorStyle} style={{ display: this.state.errorDisplay }}>
                                     {this.state.errorMsg.name}
                                 </small>
-
-                                <InputGroup size="sm" className="mb-3">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text >Document</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                    <input
-                                        type="file"
-                                        ref={this.fileInput}
-                                        accept="image/*, .pdf, .doc, .docx, .xls, .xlsx, .txt, .ppt, .pptx, .ods, .odt, .csv, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                        onChange={this.handleFile}
-                                        name="document"
-                                        className="form-control" />
-                                </InputGroup>
-                                <small className={this.state.errorStyle} style={{ display: this.state.errorDisplay }}>
-                                    {this.state.errorMsg.document}
-                                </small>
-
 
                                 <InputGroup size="sm" className="mb-3">
                                     <InputGroup.Prepend>
@@ -195,6 +199,28 @@ class Document extends React.Component {
                                     {this.state.errorMsg.type}
                                 </small>
 
+
+                                <InputGroup size="sm" className="mb-3">
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text >Document</InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <input
+                                        type="file"
+                                        ref={this.fileInput}
+                                        accept="image/*, .pdf, .doc, .docx, .xls, .xlsx, .txt, .ppt, .pptx, .ods, .odt, .csv, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                        onChange={this.handleFile}
+                                        name="document"
+                                        className="form-control" />
+                                </InputGroup>
+                                <small className={this.state.errorStyle} style={{ display: this.state.errorDisplay }}>
+                                    {this.state.errorMsg.document}
+                                </small>
+                                {/* Erro message strictly for file cancellation */}
+                                <small className={this.state.fileError.class} style={{ display: this.state.fileError.display }}>
+                                    {this.state.fileError.label}
+                                </small>
+
+
                                 <button type="submit" className="btn btn-primary add-btn btn-add-new">Add New</button>
                             </Form>
                         )}
@@ -218,7 +244,7 @@ class Document extends React.Component {
                         </tr>
                     </thead>
                     <tbody >
-                        <tr >
+                        {/* <tr >
                             <th scope="row">1</th>
                             <td></td>
                             <td></td>
@@ -235,7 +261,7 @@ class Document extends React.Component {
                                     Delete
                                 </Badge>
                             </td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
                 <button

@@ -2,7 +2,21 @@ import React from "react";
 import ProfessionalData from "../../../../dummyData/qualificationData";
 import ProfessionalModal from '../../../Shared/appModal'
 import { Badge, Form, InputGroup, FormControl } from 'react-bootstrap'
+import { Formik, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
+
+const Schema = Yup.object().shape({
+  institution: Yup.string()
+    .required(" ")
+    .min(2, "Enter valid institution name"),
+  certification: Yup.string()
+    .required(" ")
+    .min(2, "Enter valid certification"),
+  year: Yup.string()
+    .required(" ")
+    .min(2, "Year is invalid"),
+});
 
 class acadQualification extends React.Component {
   constructor() {
@@ -18,6 +32,18 @@ class acadQualification extends React.Component {
         certification: "",
         year: ""
       },
+      
+      //setting state for error messages on submit
+      validationError: {
+        label: {
+          institution: "Institution is required *",
+          certification: "certification is required *",
+          year: "year is required *"
+        },
+        //controller
+        class: 'errorMsg',
+        display: 'none'
+      }
     };
 
 
@@ -76,7 +102,7 @@ class acadQualification extends React.Component {
   }
 
 
- 
+
 
   //input form for Editing data in the modal body
   professionalQualificationModal = () => {
@@ -130,11 +156,11 @@ class acadQualification extends React.Component {
               </button>
         </div>
       )
-      
-    }else{
+
+    } else {
       editData = null
     }
-  
+
   }
 
   //Function to handle input to edit professional qualification
@@ -175,51 +201,99 @@ class acadQualification extends React.Component {
   addAcademicQualificationModal = () => {
     return (
       <div className="modal-body">
-        <Form>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >Institution</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="text"
-              placeholder="Add Institution"
-              name="institution"
-              value={this.state.profDataObject.institution}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >Certification</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="text"
-              placeholder="Add Certification"
-              name="certification"
-              value={this.state.profDataObject.certification}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
+        <Formik
+          validationSchema={Schema}
+          onSubmit={this.submitProfessionalData}
+          initialValues={{
+            institution: '',
+            certification: '',
+            year: ''
+          }}
+        >
+          {({
+            handleSubmit,
+            handleChange,
+            handleBlur,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
+              <Form onSubmit={this.submitProfessionalData}>
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >Institution</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="text"
+                    placeholder="Add Institution"
+                    name="institution"
+                    value={this.state.profDataObject.institution}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.institution ? "is-invalid" : ""
+                      }`}
+                  />
+              
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.institution}
+                </small>
 
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text >Year</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="number"
-              placeholder="Add Year"
-              name="year"
-              value={this.state.profDataObject.year}
-              onChange={this.handleAddNew}
-            />
-          </InputGroup>
-        </Form>
-        <button className="btn btn-primary add-btn btn-add-new" onClick={this.submitProfessionalData}>Add New</button>
+
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >Certification</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="text"
+                    placeholder="Add Certification"
+                    name="certification"
+                    value={this.state.profDataObject.certification}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.certification ? "is-invalid" : ""
+                      }`}
+                  />
+              
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.certification}
+                </small>
+
+                <InputGroup size="sm" className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text >Year</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Field
+                    type="number"
+                    placeholder="Add Year"
+                    name="year"
+                    value={this.state.profDataObject.year}
+                    onChange={this.handleAddNew}
+                    className={`form-control ${
+                      touched.year ? "is-invalid" : ""
+                      }`}
+                  />
+        
+                </InputGroup>
+                {/* validate error message on submit */}
+                <small className={this.state.validationError.class} style={{ display: this.state.validationError.display }}>
+                  {this.state.validationError.label.year}
+                </small>
+
+
+                <button type="submit" className="btn btn-primary add-btn btn-add-new" >Add New</button>
+              </Form>
+            )}
+        </Formik>
       </div>
     )
   }
 
-  //Function to handle input to add professional qualification 
+  //Function to handle input to add professional qualification
   handleAddNew(event) {
     const value = event.target.value;
     const name = event.target.name
@@ -235,8 +309,27 @@ class acadQualification extends React.Component {
   }
 
   //submit new professional qualification data
-  submitProfessionalData() {
-    console.log(this.state.profDataObject)
+  submitProfessionalData(event) {
+    event.preventDefault()
+    if (this.state.profDataObject.institution === "" ||
+      this.state.profDataObject.certification === "" ||
+      this.state.profDataObject.year === "") {
+      this.setState(prevState => ({
+        validationError: {
+          ...prevState.validationError,
+          display: 'block'
+        }
+      }))
+    } else {
+      this.setState(prevState => ({
+        validationError: {
+          ...prevState.validationError,
+          display: 'block'
+        }
+      }))
+      console.log(this.state.profDataObject)
+    }
+
   }
 
 
