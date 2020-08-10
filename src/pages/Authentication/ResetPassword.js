@@ -101,7 +101,7 @@ class ForgetPasswordPage extends Component {
                                                         <Form.Control
                                                             name="pasword"
                                                             placeholder="Enter New Password"
-                                                            type="text"
+                                                            type="password"
                                                             value={this.state.data.password}
                                                             onChange={this.handlePassword}
                                                             required
@@ -112,7 +112,7 @@ class ForgetPasswordPage extends Component {
                                                         <Form.Control
                                                             name="password"
                                                             placeholder="Enter New Password that matches"
-                                                            type="text"
+                                                            type="password"
                                                             value={this.state.confirmPassword}
                                                             onChange={this.comparePassword}
                                                             required
