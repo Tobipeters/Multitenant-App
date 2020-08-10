@@ -106,6 +106,9 @@ import Pages404 from "../pages/ExtraPages/Pages404";
 import Pages500 from "../pages/ExtraPages/Pages500";
 import PagesMaintenance from "../pages/ExtraPages/PagesMaintenance";
 import PagesComingsoon from "../pages/ExtraPages/PagesComingsoon";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const authProtectedRoutes = [
   // Calendar
